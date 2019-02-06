@@ -1,6 +1,33 @@
 {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
 
+<div>
+    {{ form.title.vars.id }}
+</div>
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_widget(form.title, {'attr': {'placeholder': 'another.translation'}}) }}
+            <div class="text-info">
+                {{ form_label(form.title) }}
+            </div>
+
+            <div class="alert alert-warning">
+                {{ form_errors(form.title) }}
+                {{ form_help(form.title) }}
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            {{ form_row(form.author) }}
+        </div>
+    </div>
+
+    {{ form_row(form.body) }}
+    {{ form_row(form.categories) }}
+
+    {{ form_rest(form) }}
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
